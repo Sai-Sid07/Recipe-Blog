@@ -1,0 +1,30 @@
+{
+  "name": "recipe-blog-app",
+  "version": "1.0.0",
+  "description": "Simple Recipe Blog App",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sai-Sid07/Recipe-Blog.git"
+  },
+  "author": "Sai Sidharth",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Sai-Sid07/Recipe-Blog/issues"
+  },
+  "homepage": "https://github.com/Sai-Sid07/Recipe-Blog#readme",
+  "dependencies": {
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "^1.4.6",
+    "dotenv": "^16.0.2",
+    "ejs": "^3.1.8",
+    "express-ejs-layouts": "^2.5.1",
+    "express-fileupload": "^1.4.0",
+    "express-session": "^1.17.3",
+    "mongodb": "^4.9.1",
+    "mongoose": "^6.5.4"
+  }
+}
