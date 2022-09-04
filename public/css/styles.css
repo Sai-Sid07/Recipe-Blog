@@ -40,6 +40,10 @@ a{
 
 }
 
+.category__img--medium{
+    height: 220px;
+}
+
 .category__img img{
     width:100%;
     object-fit: cover;

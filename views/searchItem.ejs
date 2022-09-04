@@ -1,0 +1,38 @@
+<% if(result != null){ %>
+    <h1>Recipe</h1>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item active"><a href="/">Home</a></li>
+        </ol>
+    </nav>
+    <div class="row">
+        <div class="col-12 col-md-4">
+            <img src="<%= result[0].strMealThumb %>" class="img-fluid sticky-top" loading="lazy">
+        </div>
+        <div class="col-12 col-md-6">
+            <div class="row">
+                <div class="col-12">
+                    <h1><%= result[0].strMeal %></h1>
+                </div>
+                <div class="col-12 mb-4">
+                    <i class="bi bi-tag"> <%= result[0].strArea %></i>
+                </div>
+                <div class="col-12" style="white-space: pre-line">
+                    <h4>Cooking Instructions</h4>
+                    <%= result[0].strInstructions %>
+                </div>
+            </div>
+        </div>
+        <div class="row pt-4">
+            <div class="col-4">
+                <h4>Ingredients</h4>
+                <ul class="list-group list-group-flush">
+                    <% for( let index = 0; index < ing.length; index++ ) { %>
+                        <li class="list-group-item"><%= ing[index] + " " + quantity[index] %></li>
+                    <% } %>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+<%}%>

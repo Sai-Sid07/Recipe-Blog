@@ -113,13 +113,48 @@ exports.exploreRecipe = (req, res) => {
 exports.searchRecipe = async (req, res) => {
     try {
         let search = req.body.search;
-        const url = "https://www.themealdb.com/api/json/v1/1/search.php?s=" + search;
-        const results = await fetch(url).then(res => res.json());  
-        console.log(results);      
-        res.render("search", {title: "Results"});
+        const urlName = "https://www.themealdb.com/api/json/v1/1/search.php?s=" + search;
+        const results = await fetch(urlName).then(res => res.json());  
+        const result = results.meals;
+        console.log(results.meals[0].strMeal);      
+        res.render("search", {title: "Results", result:result});
         
     } catch (error) {
         console.log(error);
+    }
+}
+
+exports.searchItem = async (req, res) => {
+    try{
+        let itemId = req.params.id;
+        const urlId = "https://www.themealdb.com/api/json/v1/1/lookup.php?i=" + itemId;
+        const results = await fetch(urlId).then(res => res.json());
+        const result = results.meals;
+        console.log(results.meals[0].strMeal); 
+
+        let ing = []
+        let quantity = []
+        let count = 0;
+        result.forEach(obj => {
+            Object.entries(obj).forEach(([key, value]) => {
+                count++;
+                if(count >= 10 && count <= 29 ){
+                    if(`${value}` != null && `${value}` != ""){
+                        ing.push(`${value}`)
+                    }
+                }
+                if(count >= 30 && count <= 49){
+                    if(`${value}` != null && `${value}` != "" && `${value}` != " "){
+                        quantity.push(`${value}`)
+                    }
+                }
+            });
+        });
+
+        res.render("searchItem", {title: "Results", result:result, ing:ing, quantity:quantity});
+         
+    }catch(err){
+        console.log(err)
     }
 }
 

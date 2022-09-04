@@ -1,1 +1,23 @@
-<h1>Search</h1>
+<h1>Your Results</h1>
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="/">Home</a></li>
+      <li class="breadcrumb-item active"><a>Search</a></li>
+</nav>
+
+<section class="pb-5 pt-4">
+    <div class="row row-cols-2 row-cols-lg-5 g-2 g-lg-3">
+        <% if(result.length > 0){ %>
+            <% for( let index = 0; index < result.length; index++ ) { %>
+                <a href="/search/<%=result[index].idMeal%>" class="col text-center category__link">
+                    <div class="category__img category__img--medium shadow">
+                        <img src="<%=result[index].strMealThumb%>">
+                    </div>
+                    <div class="pt-1"><%=result[index].strMeal%></div>
+                </a>
+            <% } %>
+        <%}%>
+    </div>
+</section>
+
