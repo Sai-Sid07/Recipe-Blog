@@ -79,6 +79,38 @@ exports.exploreCategories = (req, res) => {
     }
 }
 
+exports.exploreCategoriesSpecific = (req, res) => {
+    try{
+        let categoryName = req.params.name;
+        Recipe.find({"category": categoryName}, function(err, data){
+            if(err){
+                console.log("404 Error");
+            }else{
+                res.render("categories", {title: categoryName, categoryData : data, title: categoryName});
+            }
+        })
+
+    }catch(err){
+        console.log("404 Error")
+    }
+}
+
+exports.exploreRecipe = (req, res) => {
+    try{
+        let recipeID = req.params.id;
+        Recipe.find({_id:recipeID}, function(err, recipe){
+            if(err){
+                console.log("Error 404");
+            }else{
+                res.render("recipe", {title:"Recipe Page", recipe:recipe})
+
+            }
+        })
+    }catch(err){
+        console.log("404 Error")
+    }
+}
+
 
 
 
