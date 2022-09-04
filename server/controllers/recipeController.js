@@ -1,4 +1,4 @@
-// Get / -> Homepage
+const fetch = require('node-fetch')
 require("../models/database");
 const Category = require("../models/Category");
 const Recipe = require("../models/Recipe");
@@ -103,11 +103,23 @@ exports.exploreRecipe = (req, res) => {
                 console.log("Error 404");
             }else{
                 res.render("recipe", {title:"Recipe Page", recipe:recipe})
-
             }
         })
     }catch(err){
         console.log("404 Error")
+    }
+}
+
+exports.searchRecipe = async (req, res) => {
+    try {
+        let search = req.body.search;
+        const url = "https://www.themealdb.com/api/json/v1/1/search.php?s=" + search;
+        const results = await fetch(url).then(res => res.json());  
+        console.log(results);      
+        res.render("search", {title: "Results"});
+        
+    } catch (error) {
+        console.log(error);
     }
 }
 
